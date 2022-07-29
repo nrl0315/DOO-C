@@ -5,6 +5,10 @@ using namespace std ;
 string palabra_original ;
 string palabra_mostrar ;
 int vidas ;
+string palabraCorta;
+string palabraIntermedia;
+string palabraAvanzada;
+
 
 void mostrar() ;
 void ingresar(char x) ;
@@ -19,7 +23,15 @@ int main(){
         ingresar(x) ;
         mostrar() ;
     }
-    if(vidas>0) cout << "ganaste! " << endl ;
+    if(vidas>0){
+        cout << "ganaste! " << endl ;
+    } else if(palabra_original.length() == palabraCorta.length()){
+        cout << "Ganaste 1 punto" << endl;
+    } else if(palabra_original.length() == palabraIntermedia.length()){
+        cout << "Ganaste 2 puntos" << endl;
+    } else if(palabra_original.length() == palabraAvanzada.length()){
+        cout << "Ganaste 3 puntos" << endl;
+    }
     else cout << "perdiste, la palabra era: " << palabra_original << endl ;
 }
 
@@ -29,8 +41,18 @@ void mostrar(){
 }
 
 void inicializar(){
-    vidas = 5 ;
-    palabra_original = "preferencial" ;
+    palabra_original = "parangutirimicuaro" ;
+    if(palabra_original.length() > 0 && palabra_original.length() <= 5){
+        palabraCorta = palabra_original;
+        vidas = 5;
+    } else if(palabra_original.length() > 5 && palabra_original.length() <= 12){
+        palabraIntermedia = palabra_original;
+        vidas = 6;
+    } else{
+        palabraAvanzada = palabra_original;
+        vidas = 8;
+    }
+
 
     for(int i=0 ; i<palabra_original.length() ; i++){
         if(palabra_original[i]>='A' && palabra_original[i]<='Z'){
