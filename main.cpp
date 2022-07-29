@@ -22,9 +22,13 @@ void ingresar(char x) ;
 void inicializar() ;
 void menu();
 void menuAdmin();
+void vidasJuego();
 
 int main(){
     menu();
+}
+
+void vidasJuego(){
     while(vidas>0 && palabra_mostrar!=palabra_original){
         char x ;
         cin >> x ;
@@ -129,6 +133,7 @@ void menu(){
                 palabra_original = random;
                 inicializar();
                 mostrar();
+                vidasJuego();
             } break;
 
             case 2:{
@@ -137,6 +142,7 @@ void menu(){
                 palabra_original = random;
                 inicializar();
                 mostrar();
+                vidasJuego();
             }break;
 
             case 3:{
@@ -145,6 +151,7 @@ void menu(){
                 palabra_original = random;
                 inicializar();
                 mostrar();
+                vidasJuego();
             } break;
 
             case 4:{
