@@ -8,6 +8,11 @@ int vidas ;
 string palabraCorta;
 string palabraIntermedia;
 string palabraAvanzada;
+int bonoFacil = 5;
+int bonoIntermedio = 6;
+int bonoAvanzado = 8;
+int bono = 0;
+int puntos = 0;
 
 
 void mostrar() ;
@@ -23,14 +28,33 @@ int main(){
         ingresar(x) ;
         mostrar() ;
     }
-    if(vidas>0){
-        cout << "ganaste! " << endl ;
-    } else if(palabra_original.length() == palabraCorta.length()){
-        cout << "Ganaste 1 punto" << endl;
-    } else if(palabra_original.length() == palabraIntermedia.length()){
-        cout << "Ganaste 2 puntos" << endl;
+    if(vidas>0 && palabra_original.length() == palabraCorta.length()){
+        cout << "ganaste!, tienes un punto " << endl ;
+        puntos = puntos + 1;
+        if(bonoFacil == vidas){
+            bono = bono + 1;
+            cout << "Tienes un bono por adivinar la palabra completa de " << bono << " puntos" << endl;
+        } else{
+            cout << "No has ganado bono" << endl;
+        }
+    } else if(vidas > 0 && palabra_original.length() == palabraIntermedia.length()){
+        cout << "Ganaste!, tienes 2 puntos" << endl;
+        puntos = puntos + 2;
+        if(bonoIntermedio == vidas){
+            bono = bono + 1;
+            cout << "Tienes un bono por adivinar la palabra completa de " << bono << " puntos" << endl;
+        } else{
+            cout << "No has ganado bono" << endl;
+        }
     } else if(palabra_original.length() == palabraAvanzada.length()){
-        cout << "Ganaste 3 puntos" << endl;
+        cout << "Ganaste!, tienes 3 puntos" << endl;
+        puntos = puntos + 3;
+        if(bonoAvanzado == vidas){
+            bono = bono + 2;
+            cout << "Tienes un bono por adivinar la palabra completa de " << bono << " puntos" << endl;
+        } else{
+            cout << "No has ganado bono" << endl;
+        }
     }
     else cout << "perdiste, la palabra era: " << palabra_original << endl ;
 }
