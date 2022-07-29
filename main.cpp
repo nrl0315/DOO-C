@@ -13,15 +13,18 @@ int bonoIntermedio = 6;
 int bonoAvanzado = 8;
 int bono = 0;
 int puntos = 0;
-
+char *bancoFacil[] = {"carro", "perro","papa"};
+char *bancoIntermedio[] = {"aeropuerto","prestamo","orientado"};
+char *bancoAvanzado[] = {"parangutirimicuaro","otorrinolaringologia"};
 
 void mostrar() ;
 void ingresar(char x) ;
 void inicializar() ;
+void menu();
+void menuAdmin();
 
 int main(){
-    inicializar() ;
-    mostrar() ;
+    menu();
     while(vidas>0 && palabra_mostrar!=palabra_original){
         char x ;
         cin >> x ;
@@ -65,7 +68,6 @@ void mostrar(){
 }
 
 void inicializar(){
-    palabra_original = "parangutirimicuaro" ;
     if(palabra_original.length() > 0 && palabra_original.length() <= 5){
         palabraCorta = palabra_original;
         vidas = 5;
@@ -106,4 +108,51 @@ void ingresar (char x){
 
     if(perdiVidas) vidas-- ;
 
+}
+
+void menu(){
+    int opcion;
+    while(opcion != 5){
+        cout << "**********************************************" << endl;
+        cout << "1. Jugar en modo facil" << endl;
+        cout << "2. Jugar en modo intermedio" << endl;
+        cout << "3. Jugar en modod avanzado" << endl;
+        cout << "4. Entrar en modo admin" << endl;
+        cout << "5. Salir" << endl;
+        cout << "**********************************************" << endl;
+        cin >> opcion;
+
+        switch(opcion){
+            case 1:{
+                int posicion = 0;
+                string random = bancoFacil[posicion];
+                palabra_original = random;
+                inicializar();
+                mostrar();
+            } break;
+
+            case 2:{
+                int posicion = 0;
+                string random = bancoIntermedio[posicion];
+                palabra_original = random;
+                inicializar();
+                mostrar();
+            }break;
+
+            case 3:{
+                int posicion = 0;
+                string random = bancoAvanzado[posicion];
+                palabra_original = random;
+                inicializar();
+                mostrar();
+            } break;
+
+            case 4:{
+            } break;
+
+            case 5:{
+                system("cls");
+            }
+        }
+    }
 }
